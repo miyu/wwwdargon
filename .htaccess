@@ -1,0 +1,183 @@
+##################################
+# Boilerplate Stuff              #
+
+#followsymlinks necessary for godaddy
+Options +FollowSymlinks
+Options -Indexes
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase /
+
+##
+# Add www if necessary
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule (.*)$ - [L]
+
+##
+# Uncomment this for debugging paths...
+# RewriteRule (.*)$ vardumpget.php?url=$1 [L,QSA]
+# RewriteRule (.*)$ vardumpget.php?url=%{DOCUMENT_ROOT} [L,QSA]
+
+##
+# Set Homepage
+RewriteRule ^/?$ subscribe.php [L]
+
+###
+## If someone from itzwarty.com goes to the dargon_io dir, they get a 404
+#RewriteCond %{HTTP_HOST} ^itzwarty\.com$ [NC]
+#RewriteRule ^(.*)$ - [R=404,L,NC]
+#
+###
+## Block access to anything with breadcrumb starting with a dot.
+#RewriteCond %{REQUEST_URI} test [NC]
+#RewriteRule ^(.*)$ /404.php?url=%{DOCUMENT_URI} [QSA,L]
+
+##
+# Trailing Slash Fix: Rewrite /herp to /herp/ if herp doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ /$1/ [R=301,L,QSA]
+
+###############################################
+# Breadcrumb Pages:                           #
+
+##
+# /herp/ becomes /herp.php if herp.php exists
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/?$
+RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+RewriteRule ^(.*)/$ %1.php [QSA,L]
+
+
+##
+# /herp/derp/ becomes /herp.php?param1=derp
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/?$
+RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+RewriteRule ^(.*)/$ %1.php?param1=%2 [QSA,L]
+
+##
+# /herp/derp/lerp/ becomes /herp.php?param1=derp¶m2=lerp
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/?$
+RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+RewriteRule ^(.*)/$ %1.php?param1=%2&param2=%3 [QSA,L]
+
+###############################################
+# Everything Else:                            #
+
+RewriteRule (.*) - [L,QSA]
+
+# RewriteRule (.*) vardumpget.php?url=$1 [L,QSA]
+
+################################################################################################################
+# End
+################################################################################################################
+
+
+###################################
+## Do not permit access to any config/setup/modules/views/templates/etc.
+## Basically, they can't access the Dargon server's files, just in case a module
+## stores some configurations there
+#RewriteCond %{REQUEST_URI} .dargonconfig
+#RewriteRule ^(.*)$ /LogWarning.php?requestUrl=%{REQUEST_URI}&requestHost=%{REQUEST_HOST} [QSA,L]
+#
+###################################
+## Do not permit access to the dargon_io directory
+#RewriteCond %{REQUEST_URI} dargon_io/(.*) [NC]
+#RewriteRule ^(.*)$ /LogWarning.php?requestUrl=%{REQUEST_URI}&requestHost=%{REQUEST_HOST} [QSA,L]
+#
+###################################
+##Rewrite /raf/ to the appropriate dargon page
+#RewriteCond %{REQUEST_URI} ^/?raf/?$ [NC]
+#RewriteRule ^(.*)$ main.php?view=raf [QSA,L]
+#
+##Never rewrite /raf/*
+#RewriteCond %{REQUEST_URI} raf/(.*) [NC]
+#RewriteRule ^raf(.*) raf$1 [L,NC]
+#
+###################################
+##Never rewrite bin.zip
+#RewriteCond %{REQUEST_URI} bin\.zip [NC]
+#RewriteRule ^(.*)$ raf/bin.zip [L,NC]
+#
+##Takes the site offline temporarily.  Dargon.View is still temporarily online if this is done.
+##RewriteRule ^(.*)$ temporarilyOffline.php [L,NC]
+#
+###################################
+##Never rewrite echo.php
+#RewriteCond %{REQUEST_URI} echo.php$
+#RewriteRule ^(.*)$ - [L]
+#
+###################################
+##rewrite for show-server-status - do nothing
+#RewriteCond %{REQUEST_URI} (show-server-status)/$
+#RewriteRule ^(.*)$ - [L]
+#
+##Rewrite anything pointing to assets, scripts, and stylesheets
+#RewriteRule resources/assets/([a-zA-Z0-9\._-]+)$ resources/assets/$1 [L]
+#RewriteRule resources/scripts/([a-zA-Z0-9\._-]+)$ resources/scripts/$1 [L]
+#RewriteRule resources/stylesheets/([a-zA-Z0-9\._-]+)$ resources/stylesheets/$1 [L]
+#
+###################################
+## Trailing Slash Fix
+##Rewrite www.ItzWarty.com/herp to www.ItzWarty.com/herp/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} !(.*)/$
+#RewriteRule ^(.*)$ /$1/ [R=301,L]
+#
+###################################
+##Rewrite for /test/ -> /test.php
+#RewriteCond %{REQUEST_URI} !.php$
+#RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/?$
+#RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+#RewriteRule ^(.*)/?$ %1.php [QSA,L]
+#
+##Rewrite for /test/asdf/ -> /test.php?param1=asdf
+#RewriteCond %{REQUEST_URI} !.php$
+#RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/?$
+#RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+#RewriteRule ^(.*)/?$ %1.php?param1=%2 [QSA,L]
+#
+##Rewrite for /test/asdf/qwerty/ -> /test.php?param1=asdf&param2=qwerty
+#RewriteCond %{REQUEST_URI} !.php$
+#RewriteCond %{REQUEST_URI} ^/?([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/?$
+#RewriteCond %{DOCUMENT_ROOT}/%1.php -f
+#RewriteRule ^(.*)/?$ %1.php?param1=%2&param2=%3 [QSA,L]
+#
+##Set Home Page
+#RewriteRule ^$ main.php [L]
+#RewriteRule ^/$ main.php [L]
+#
+##Rewrite view/blah to /blah
+#RewriteRule ^view/(.*) /$1 [QSA]
+#
+##Rewrite /blah and /blah/ to main.php?view=blah
+#RewriteRule ^([a-zA-Z0-9\._-]+)/$ /main.php?view=$1 [QSA,L]
+#RewriteRule ^([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/$ /main.php?view=$1&param1=$2 [QSA,L]
+#RewriteRule ^([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/([a-zA-Z0-9\._-]+)/$ /main.php?view=$1&param1=$2&param2=$3 [QSA,L]
+#
+#ErrorDocument 404 /404/
+##ErrorDocument 404 /404/
+#
+####################################
+###Caching stuff
+### A long time (1 week)
+##<filesMatch "\.(ico|pdf|flv|bmp|jpg|jpeg|png|gif|css|swf)$">
+##Header set Cache-Control "public, max-age=600"
+##</filesMatch>
+## 
+### 10 minutes
+##<filesMatch "\.(xml|txt)$">
+##Header set Cache-Control "max-age=600, public, must-revalidate"
+##</filesMatch>
+## 
+### 2 HOURS
+##<filesMatch "\.(html|htm|js)$">
+##Header set Cache-Control "max-age=7200, must-revalidate"
+##</filesMatch>

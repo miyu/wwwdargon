@@ -1,0 +1,648 @@
+/* 
+    Document   : launch_page.css
+    Created on : Nov 15, 2013, 4:59:31 AM
+    Author     : ItzWarty
+    Description:
+        Purpose of the stylesheet follows.
+*/
+html,body,div,header,h1,h2,h3,form,ul,li { margin:0; padding:0; }
+html,body { min-width:100%; min-height: 100%; min-height: 700px; }
+
+body { background-color: #101010; }
+
+.addthis_toolbox > a {
+   float: right !important;
+}
+
+.addthis_toolbox > a:first-of-type {
+   padding-right: 0;
+}
+
+.addthis_toolbox > a:first-of-type > span {
+   margin-right: 0;
+}
+
+header {
+   display: none;
+   
+   position: relative;
+   background-color: #101010;
+   border-bottom: 2px #007ECA solid;
+   list-style: none;
+   font-family: Calibri;
+}
+header:after {
+   content: "";
+   display: table;
+   clear: both;
+}
+
+header > h1 {
+   display: inline-block;
+   color: silver;
+   font-size: 2em;
+   margin-left: 0.2em;
+}
+
+header > ul {
+   display: block;
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   
+   margin-right: 1em;
+}
+
+header > ul li {
+   float: left;
+   display: inline;
+   color: white;
+   background-color: #007ECA;
+   border: 2px #007ECA solid;
+   border-bottom-width: 0;
+   padding: 0.3em 0.5em 0.2em 0.5em;
+}
+
+#statusbar {
+   display: none;
+   font-family: calibri;
+   font-size: 1.2em;
+   text-align: center;
+   padding-top: 0.3em;
+   padding-bottom: 0.3em;
+}
+
+#statusbar .text span {
+   white-space: nowrap;
+}
+
+#statusbar[data-status="caution"] {
+   display: block;
+   background-color: yellow;
+   color: black;
+}
+
+#statusbar[data-status="success"] {
+   display: block;
+   background-color: #72FF26;
+   color: #0C2E11;
+}
+
+#statusbar[data-status="failure"] {
+   display: block;
+   background-color: #F03C3C;
+   color: #2E0C0C;
+}
+
+.hero {
+   width: 100%;
+   height: 60%;
+   background: url(../assets/launch_bg_export.jpg);
+   background-size: cover;
+   background-position: center bottom; 
+}
+
+.hero > .logo-container-host {
+   position: relative;
+   top: 0px;
+   width: 100%;
+   top: 15%;
+   height: 70%;
+}
+   
+.hero > .logo-container-host > .logo-container {
+   width: 100%;
+   height: 100%;
+   
+   background: url("../assets/launch_logo_export.png") no-repeat;
+   background-size: contain;
+   background-position: center center;
+   
+   /*
+   color: white;
+   font-size: 3em;
+   text-shadow: 0px 0px 5px #000000, 0px 0px 10px #000000;
+   
+   -webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+   filter: url(#drop-shadow);
+   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+   */
+}
+
+nav {
+   display: none;
+   color: silver;
+   margin: 0 auto;
+   max-width: 1100px;
+   font-family: "Trebuchet MS", Helvetica, sans-serif;
+   font-weight: lighter;
+   font-size: 1.5em;
+   padding-top: 0.2em;
+   padding-bottom: 0.2em;
+}
+nav:after {
+   content: "";
+   display: table;
+   clear: both;
+}
+nav .update {
+}
+
+.body-wrapper-container {
+   padding-top: 1em;
+   padding-bottom: 0.5em;
+   background-color: #FFFFFF;
+}
+
+.body-wrapper {
+   width: 100%;
+   
+   display: block;
+   font-family: calibri;
+   position: relative;
+}
+
+.body-wrapper:before{
+   content: ".";
+   opacity: 0.2;
+   font-size: 1;
+   position: absolute;
+   left: 50%;
+   top: 0px;
+   width: 1px;
+   height: 100%;
+   background: #505050; /* Old browsers */
+   background: -moz-linear-gradient(top,  #ffffff 0%, #505050 5%, #505050 95%, #ffffff 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(5%,#505050), color-stop(95%,#505050), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(top,  #ffffff 0%,#505050 5%,#505050 95%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(top,  #ffffff 0%,#505050 5%,#505050 95%,#ffffff 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(top,  #ffffff 0%,#505050 5%,#505050 95%,#ffffff 100%); /* IE10+ */
+   background: linear-gradient(to bottom,  #ffffff 0%,#505050 5%,#505050 95%,#ffffff 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.body-wrapper:after{
+   content: ".";
+   font-size: 1;
+   clear: both;
+}
+
+.body-wrapper p {
+   text-align: justify;
+   margin-top: 0;
+   margin-bottom: 0.5em;
+}
+.body-wrapper p:last-of-type { margin-bottom: 0; }
+
+.body-wrapper > div {
+   float:left; 
+   width: 50%; 
+}
+
+.body-wrapper > .info {   
+}
+
+.body-wrapper > .info .description {   
+   text-align: right;
+   padding-right: 20px;
+}
+
+.body-wrapper > .info .description > h2 {   
+   font-size: 2em;
+}
+.body-wrapper > .info .description > h3 {   
+   margin-top: -0.4em;
+}
+
+.body-wrapper > .info .description > p { 
+   max-width: 400px;
+   margin-left: auto;
+   margin-right: 0;
+}
+
+.body-wrapper > .info .description > label {
+   position: relative;
+   display: block;
+}
+
+.body-wrapper > .info .description > label:after {
+   content: " \00bb"; /* equivalent to &rarr; */
+}
+
+/* checked/unchecked: explicitly JS enabled */
+.body-wrapper > .info .description > label.checked {
+   opacity: 1.0;
+}
+
+.body-wrapper > .info .description > label.unchecked {
+   opacity: 0.5;
+}
+
+.body-wrapper > .info .description > label.unchecked:hover {
+   text-decoration: underline;
+   cursor: pointer;
+}
+
+.body-wrapper > .info .description > label input {
+   display: none;
+}
+
+.body-wrapper > .view-container:after {
+   content: "";
+   display: table;
+}
+
+.body-wrapper > .view-container > .view-content > form {
+   position: relative;
+   margin-right: 25px;
+   width: 525px;
+}
+
+.body-wrapper > .view-container > .view-content .ajax_mask {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   margin-left: 1em;
+   background: white url("../assets/ajax_loader.gif") no-repeat;
+   background-position: 130px center;
+   opacity: 0.95;
+}
+
+.body-wrapper > .view-container > .view-content .ajax_mask:after {
+   content:"Submitting Response"; 
+   
+   color: #707070;
+   position: absolute;
+   left: 175px;
+   top: 135px;
+   font-size: 1.5em;
+   width: 100%;
+}
+
+.body-wrapper > .view-container > .view-content > form span.badinput{
+   display: none;
+   color: red;
+   font-size: 0.7em;
+}
+
+.body-wrapper > .view-container >  * {
+   position: relative;
+   padding-left: 20px;
+   padding-right: 20px;
+   width: 525px;
+   padding-bottom: 1em;
+}
+
+/* NO JS: Padding between views */
+.body-wrapper > .view-container > *:not(:first-child) {
+   padding-top: 0.5em;
+}
+
+.body-wrapper > .view-container p,.paragraph-like {
+   color: #4C4C4C;
+}
+
+
+/* Padding between sections of a view */
+.body-wrapper > .view-container > .view-content > div:not(:first-child),
+.body-wrapper > .view-container > .view-content > section:not(:first-child),
+.body-wrapper > .view-container > .view-content > form:not(:first-child) {
+   padding-top: 1em;
+}
+.body-wrapper > .view-container > .view-content > div,section,form {
+   padding-bottom: 1em;
+}
+
+/* Separator between sections of a view */
+.body-wrapper > .view-container > #subscribe-view > * {
+   position: relative;
+}
+
+.body-wrapper > .view-container > #subscribe-view > *:not(:first-child):before,
+.body-wrapper > .view-container > *:not(:first-child):before {   
+   content: ".";
+   opacity: 0.5;
+   font-size: 0px;
+   position: absolute;
+   top: 0px;
+   height: 1px;
+   left: 1%;
+   width: 99%;
+   
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+   box-sizing: border-box;         /* Opera/IE 8+ */
+   
+   
+   background: #505050; /* Old browsers */
+   background: -moz-linear-gradient(left,  #ffffff 0%, #a0a0a0 5%, #a0a0a0 95%, #ffffff 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top   , right top, color-stop(0%,#ffffff), color-stop(5%,#a0a0a0), color-stop(95%,#a0a0a0), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* IE10+ */
+   background: linear-gradient(to right,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+
+.body-wrapper > .view-container> .view-content > form > table {
+   position: relative;
+   width: 100%;
+   color: #404040;
+}
+
+.body-wrapper > .view-container > .view-content > form > table:after {
+   visibility: hidden;
+   
+   content: ".";
+   font-size: 1;
+   position: absolute;
+   left: 0px;
+   bottom: 0px;
+   width: 100%;
+   height: 1px;
+   
+   background: #505050; /* Old browsers */
+   background: -moz-linear-gradient(left,  #ffffff 0%, #a0a0a0 5%, #a0a0a0 95%, #ffffff 100%); /* FF3.6+ */
+   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(5%,#a0a0a0), color-stop(95%,#a0a0a0), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+   background: -webkit-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+   background: -o-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* Opera 11.10+ */
+   background: -ms-linear-gradient(left,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* IE10+ */
+   background: linear-gradient(to right,  #ffffff 0%,#a0a0a0 5%,#a0a0a0 95%,#ffffff 100%); /* W3C */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+
+.body-wrapper > .view-container > .view-content > form > table tr td:first-child {
+   width: 1px;
+   text-align: right;
+   text-wrap: none;
+   white-space: nowrap;
+   padding-right: 0.3em;
+}
+.body-wrapper > .view-container > .view-content > form > table tr td {
+   font-size: 1.5em;
+   vertical-align: top
+}
+.body-wrapper > .view-container > .view-content > form > table input[type="text"] {
+   font-size: 0.8em;
+   padding: 0.1em;
+   width: 100%;
+   outline: none;
+}
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > span {
+   float: left;
+   width: 100%;
+   margin-top: 0.3em;
+   font-size: 0.8em;
+   font-weight: lighter;
+   color: #202020;
+}
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > span:not(:first-child) {
+   margin-top: 0.5em;
+}
+
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > div {
+   float: left;
+   width: 50%;
+   font-size: 0.7em;
+   white-space: nowrap;
+   overflow: hidden;
+}
+
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > div input[type="checkbox"] {
+   padding-left: 0;
+   margin-left: 0;
+}
+
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > div.text {
+   width: 100%;
+   border: 1px solid #C0C0C0;
+   
+   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+   box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.body-wrapper > .view-container > .view-content > form > table tr.iama-row > td.data-array > div.text > textarea {
+   font-size: 0.8em;
+   padding: 0.1em;
+   width: 100%;
+   border: none;
+   margin: 0.2em 0 0 0.4em;
+   outline: none;
+   resize: none;
+}
+
+
+.body-wrapper > .view-container > .view-content > form > table tr > td.submit-host {
+   padding-right: 0;
+}
+
+.body-wrapper > .view-container > .view-content > form .submit-host > input.submit {
+   padding: 0.5em;
+   float: right;
+   margin-left: 0;
+   width: 100px;
+}
+
+a,
+.body-wrapper > .view-container > .view-content > form .submit-host > input[type="reset"] {
+   color: #007ECA;
+   text-decoration: none;
+}
+
+.body-wrapper > .view-container > .view-content > form .submit-host > input[type="reset"] {
+   display: inline;
+   background: none;
+   border: none;
+   float: left;
+   line-height: 2em;
+   font-size: 0.7em;
+   padding-left: 0;
+   outline: none;
+}
+
+a:hover,
+.body-wrapper > .view-container > .view-content > form .submit-host > input[type="reset"]:hover {
+   cursor: pointer;
+   text-decoration: underline;
+}
+
+.body-wrapper h2 {
+   font-size: 2em;
+   color: #4C4C4C;
+}
+
+.body-wrapper h3 {
+   font-size: 1.2em;
+   color: #5F5F5F;
+   margin-top: -3px;
+   font-weight: normal;
+}
+
+footer {
+   clear: both;
+   display: block;
+   background-color: #101010;
+   
+   font-family: calibri;
+   /* border-top: 2px #007ECA solid; */
+}
+footer:after {
+   content:"";
+   display:table;
+   clear:both;
+}
+
+footer a { color: silver; }
+
+footer span {
+   display: block;
+   color: silver;
+   font-size: 1.2em;
+   
+   padding-bottom: 0.1em;
+   white-space: nowrap;
+}
+
+footer span:first-child {
+   padding-top: 0.5em;
+}
+
+footer span:last-child {
+   padding-bottom: 0.5em;
+}
+
+footer > .legal {
+   float: right;
+   width: 50%;
+   text-align: left;
+}
+footer > .legal > span { padding-left: 0.5em; }
+
+footer > .farewell {
+   float: right;
+   width: 50%;
+   text-align: right;
+}
+footer > .farewell > span { padding-right: 0.5em; }
+
+@media (min-width: 850px) and (max-width: 1124px) {
+   .hero {
+      max-height: 350px;
+   }
+   
+   body { 
+   }
+   
+   /* .body-wrapper contents align right  */
+   .body-wrapper {
+      text-align: right;
+   }
+   
+   /* Make Info and Signup inline  */
+   .body-wrapper > div {
+      display: inline-block;
+      float: none;
+   }
+   .info {
+      width: auto !important;
+      vertical-align: top;
+   }
+   
+   .view-container {
+      text-align: left;
+      width: 50%;
+      min-width: 575px;
+   }
+   
+   /* fix vertical separator */
+   .body-wrapper:before{
+      left: auto;
+      right: 575px;
+   }
+}
+
+@media (max-width: 850px) {
+   #statusbar {
+      min-width: 565px;
+   }
+   
+   /* Make hero smaller */
+   .hero {
+      max-height: 280px;
+      width: auto;
+      min-width: 565px;
+      background-image: url(../assets/launch_bg_small_export.jpg);
+   }
+   
+   .body-wrapper-container {
+      min-width: 565px;
+   }
+   
+   /* Info touches hero */
+   .body-wrapper {
+      margin-top: auto;
+      margin-left: auto;
+      margin-right: auto;
+      width: 565px;
+   }
+   
+   .body-wrapper > .info .description {
+      margin-top: auto;
+   }
+   
+   /* remove vertical separator */
+   .body-wrapper:before{
+      display: none;
+   }
+   
+   /* Make Info and Signup block non-floating nonpadded  */
+   .body-wrapper > div {
+      display: block;
+      float: none;
+      width: auto;
+   }
+   
+   #subscribe-view form {
+      padding-left: 0 !important;
+      margin: 0 auto !important;
+   }
+   
+   /* info text is non-block single line */
+   .info {
+      display: none !important;
+      width: auto !important;
+      min-width: 565px;
+      color: #F0F0F0;
+      background-color: #202020;
+   }
+   
+   .info .description 
+   { 
+      margin: 0 auto;
+      position: relative;
+      text-align: left; 
+      padding-bottom: 0.3em !important;
+   }
+   
+   .info .description h2,h3 {
+      display: inline;
+   }
+   
+   footer {
+      min-width: 565px;
+   }
+   
+   /* Split footer to two rows */
+   .farewell,.legal {
+      float: none !important;
+      width: auto !important;
+   }
+   .farewell { display: none; }
+   .legal {
+      text-align: center !important;
+   }
+}
